@@ -1,9 +1,8 @@
-Reimplementing basic RL algos in Python and Rust
+Reimplementing basic RL algos in Python
 
 By Aug 29
 - [x] REINFORCE
 - [ ] VPG
 - [ ] PPO
-- [ ] A2C
 - [ ] DQN
 - [ ] SAC
