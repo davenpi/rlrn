@@ -60,8 +60,8 @@ for update in range(num_updates):
     avg_psuedo_loss.backward()
     optimizer.step()
 
-    if update % 10 == 0:
+    if update % 10 == 0 or update == num_updates - 1:
         print(
-            f"Update {update}: Avg return = {sum(returns) / len(returns):.1f}, "
+            f"Update {update + 1}: Avg return = {sum(returns) / len(returns):.1f}, "
             f"Min = {min(returns)}, Max = {max(returns)}"
         )
