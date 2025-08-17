@@ -1,5 +1,6 @@
-Implement REINFORCE (simple policy gradient). Outputs are:
+Implement REINFORCE (simple policy gradient).
 
+# Total return weight:
 ```zsh
 (rlrn) rlrn % uv run python reinforce/alg.py 
 Update 1: Avg return = 19.9, Min = 9.0, Max = 56.0
@@ -29,3 +30,29 @@ Demonstrates REINFORCE is sample inefficient. We need to:
 - Generate many entire trajectories to get a good estimate of the gradient
 - We can't learn until trajectories are complete
 - Training takes longer the better we get (longer episodes means longer time until model updates)
+
+# Reward to go weight (better at a given step):
+```zsh
+(rlrn) rlrn % uv run  python reinforce/rw_to_go.py
+Update 0: Avg return = 21.6, Min = 9.0, Max = 60.0
+Update 10: Avg return = 25.5, Min = 9.0, Max = 102.0
+Update 20: Avg return = 33.6, Min = 12.0, Max = 81.0
+Update 30: Avg return = 45.4, Min = 13.0, Max = 115.0
+Update 40: Avg return = 47.2, Min = 13.0, Max = 147.0
+Update 50: Avg return = 61.2, Min = 15.0, Max = 173.0
+Update 60: Avg return = 75.9, Min = 16.0, Max = 297.0
+Update 70: Avg return = 94.3, Min = 19.0, Max = 246.0
+Update 80: Avg return = 155.7, Min = 20.0, Max = 500.0
+Update 90: Avg return = 214.5, Min = 37.0, Max = 500.0
+Update 100: Avg return = 277.9, Min = 54.0, Max = 500.0
+Update 110: Avg return = 354.1, Min = 57.0, Max = 500.0
+Update 120: Avg return = 399.1, Min = 118.0, Max = 500.0
+Update 130: Avg return = 459.8, Min = 152.0, Max = 500.0
+Update 140: Avg return = 450.2, Min = 106.0, Max = 500.0
+Update 150: Avg return = 489.3, Min = 237.0, Max = 500.0
+Update 160: Avg return = 478.9, Min = 141.0, Max = 500.0
+Update 170: Avg return = 491.1, Min = 234.0, Max = 500.0
+Update 180: Avg return = 479.8, Min = 272.0, Max = 500.0
+Update 190: Avg return = 497.4, Min = 328.0, Max = 500.0
+Update 199: Avg return = 492.8, Min = 351.0, Max = 500.0
+```

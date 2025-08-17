@@ -44,24 +44,28 @@ for update in range(num_updates):
         trunc = False
         term = False
         ret = 0
-        episode_log_probs = 0
+        rewards = []
+        log_probs = []
         while not trunc and not term:
             logits = logits_network(torch.tensor(obs, dtype=torch.float32))
             probs = torch.softmax(logits, dim=0)
             action = torch.multinomial(probs, num_samples=1)
-            episode_log_probs += torch.log(probs[action])
+            log_probs.append(torch.log(probs[action]))
             obs, rew, term, trunc, info = env.step(action.item())
+            rewards.append(rew)
             ret += rew
 
-        returns.append(ret)
-        total_psuedo_loss -= episode_log_probs * ret
+        for i in range(len(rewards)):
+            rw_to_go = sum(rewards[i:])
+            total_psuedo_loss += log_probs[i] * rw_to_go
 
-    avg_psuedo_loss = total_psuedo_loss / episodes_per_update
+        returns.append(sum(rewards))
+    avg_psuedo_loss = - total_psuedo_loss / episodes_per_update
     avg_psuedo_loss.backward()
     optimizer.step()
 
     if update % 10 == 0 or update == num_updates - 1:
         print(
-            f"Update {update + 1}: Avg return = {sum(returns) / len(returns):.1f}, "
+            f"Update {update}: Avg return = {sum(returns) / len(returns):.1f}, "
             f"Min = {min(returns)}, Max = {max(returns)}"
         )
