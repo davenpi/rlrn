@@ -60,7 +60,7 @@ for update in range(num_updates):
             total_psuedo_loss += log_probs[i] * rw_to_go
 
         returns.append(sum(rewards))
-    avg_psuedo_loss = - total_psuedo_loss / episodes_per_update
+    avg_psuedo_loss = -total_psuedo_loss / episodes_per_update
     avg_psuedo_loss.backward()
     optimizer.step()
 

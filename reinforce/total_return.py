@@ -54,9 +54,9 @@ for update in range(num_updates):
             ret += rew
 
         returns.append(ret)
-        total_psuedo_loss+= episode_log_probs * ret
+        total_psuedo_loss += episode_log_probs * ret
 
-    avg_psuedo_loss = - total_psuedo_loss / episodes_per_update
+    avg_psuedo_loss = -total_psuedo_loss / episodes_per_update
     avg_psuedo_loss.backward()
     optimizer.step()
 

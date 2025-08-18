@@ -3,6 +3,7 @@ use rand::Rng;
 pub struct CartPole {
     // Environment parameters (CartPole-v1 standard)
     gravity: f64,
+    #[allow(dead_code)]
     mass_cart: f64,
     mass_pole: f64,
     total_mass: f64,
