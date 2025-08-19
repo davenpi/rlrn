@@ -2,10 +2,9 @@ Reimplementing basic RL algos in Python
 
 By Aug 29
 - [x] REINFORCE
-- [ ] VPG
-- [ ] PPO
-- [ ] DQN
-- [ ] SAC
+- [x] VPG
+- [ ] PPO variants
+- [ ] Something off policy and more sample efficient
 
 ## Notes for self/others
 
